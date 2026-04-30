@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday Meri Tidi ❤️</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            position: relative;
+        }
+
+        /* Beautiful Gradient Themes */
+        .phase1 { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); }
+        .phase2 { background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%); }
+        .phase3 { background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%); }
+        .phase4 { background: linear-gradient(135deg, #fa709a 0%, #fee140 100%); }
+
+        /* Floating Emojis */
+        body::before {
+            content: attr(data-emojis);
+            position: absolute;
+            top: 20px;
+            font-size: 2.5em;
+            animation: float 6s ease-in-out infinite;
+            pointer-events: none;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            33% { transform: translateY(-30px) rotate(5deg); }
+            66% { transform: translateY(-15px) rotate(-5deg); }
+        }
+
+        .card {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(25px);
+            border-radius: 30px;
+            padding: 50px 40px;
+            max-width: 650px;
+            max-height: 85vh;
+            overflow-y: auto;
+            text-align: center;
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.3);
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            transform: scale(0.95) translateY(20px);
+            opacity: 0;
+            transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        .card.active {
+            transform: scale(1) translateY(0);
+            opacity: 1;
+        }
+
+        .card:not(.active) {
+            display: none !important;
+        }
+
+        h1 {
+            font-size: 2.8em;
+            margin-bottom: 25px;
+            background: linear-gradient(45deg, #fff, rgba(255,255,255,0.8));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-shadow: 0 4px 12px rgba(0,0,0,0.3);
+            animation: titleGlow 3s ease-in-out infinite alternate;
+        }
+
+        @keyframes titleGlow {
+            0% { filter: drop-shadow(0 0 10px rgba(255,255,255,0.5)); }
+            100% { filter: drop-shadow(0 0 20px rgba(255,255,255,0.8)); }
+        }
+
+        .message {
+            font-size: 1.35em;
+            line-height: 1.75;
+            margin: 30px 0;
+            color: white;
+            font-weight: 400;
+            text-shadow: 0 2px 8px rgba(0,0,0,0.5);
+        }
+
+        .punjabi-message {
+            font-size: 1.25em !important;
+            line-height: 1.8 !important;
+            font-family: 'Noto Sans Gurmukhi', serif !important;
+            background: rgba(255,255,255,0.1);
+            padding: 25px;
+            border-radius: 20px;
+            border-left: 5px solid #FFD700;
+            margin: 20px 0;
+        }
+
+        .btn {
+            background: linear-gradient(45deg, #FF6B6B, #FF8E53);
+            border: none;
+            color: white;
+            padding: 18px 45px;
+            font-size: 1.25em;
+            border-radius: 50px;
+            cursor: pointer;
+            margin: 15px 8px;
+            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            box-shadow: 0 15px 35px rgba(255, 107, 107, 0.4);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            transition: left 0.5s;
+        }
+
+        .btn:hover::before { left: 100%; }
+        .btn:hover {
+            transform: translateY(-10px) scale(1.05);
+            box-shadow: 0 25px 50px rgba(255, 107, 107, 0.6);
+        }
+
+        .btn:active { transform: translateY(-5px) scale(1.02); }
+
+        .yes-btn { background: linear-gradient(45deg, #00C9FF, #92FE9D) !important; box-shadow: 0 15px 35px rgba(0, 201, 255, 0.4) !important; }
+        .no-btn { background: linear-gradient(45deg, #FF416C, #FF4B2B) !important; box-shadow: 0 15px 35px rgba(255, 65, 108, 0.4) !important; }
+
+        /* Doraemon */
+        .dora-container {
+            margin: 30px 0;
+            min-height: 250px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .doraemon {
+            width: 250px;
+            height: 250px;
+            background: linear-gradient(45deg, #00BFFF, #1E90FF);
+            border-radius: 50%;
+            display: none;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.4em;
+            font-weight: bold;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+            box-shadow: 0 20px 45px rgba(0, 191, 255, 0.4);
+            animation: doraShake 0.8s infinite;
+            border: 8px solid #87CEEB;
+        }
+
+        .doraemon.active { display: flex; }
+
+        @keyframes doraShake {
+            0%, 100% { transform: translateX(0) rotate(0deg); }
+            25% { transform: translateX(-12px) rotate(-3deg); }
+            75% { transform: translateX(12px) rotate(3deg); }
+        }
+
+        /* Birthday Card Special */
+        .birthday-card {
+            background: linear-gradient(135deg, rgba(255,215,0,0.2), rgba(255,165,0,0.2));
+            border: 3px solid rgba(255,215,0,0.6);
+            border-radius: 25px;
+            padding: 40px;
+            margin: 25px 0;
+            box-shadow: 0 25px 55px rgba(255,215,0,0.3);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .birthday-card::before {
+            content: '✨💖🎂💝🎈💕✨';
+            position: absolute;
+            top: -40px;
+            left: -40px;
+            font-size: 2.8em;
+            animation: sparkle 15s linear infinite;
+        }
+
+        @keyframes sparkle {
+            0% { transform: rotate(0deg) scale(1); }
+            100% { transform: rotate(360deg) scale(1.1); }
+        }
+
+        /* Photo Frame */
+        .photo-frame {
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            border: 12px solid rgba(255,255,255,0.8);
+            margin: 40px auto;
+            background: linear-gradient(45deg, rgba(255,255,255,0.3), rgba(255,255,255,0.1));
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            font-size: 3.2em;
+            box-shadow: 0 30px 70px rgba(0,0,0,0.4);
+            animation: photoPulse 3s ease-in-out infinite;
+        }
+
+        @keyframes photoPulse {
+            0%, 100% { transform: scale(1); box-shadow: 0 30px 70px rgba(255,255,255,0.3); }
+            50% { transform: scale(1.03); box-shadow: 0 30px 80px rgba(255,255,255,0.5); }
+        }
+
+        /* Teddy */
+        .teddy {
+            font-size: 8em;
+            margin: 30px 0;
+            animation: teddyBounce 2.5s infinite;
+            filter: drop-shadow(0 10px 25px rgba(0,0,0,0.3));
+        }
+
+        @keyframes teddyBounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+            40% { transform: translateY(-35px); }
+            60% { transform: translateY(-20px); }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .card { padding: 40px 25px; margin: 20px; max-width: 95%; }
+            h1 { font-size: 2.2em; }
+            .message { font-size: 1.2em; }
+            .btn { padding: 15px 30px; font-size: 1.1em; }
+            .photo-frame { width: 250px; height: 250px; font-size: 2.5em; }
+        }
+    </style>
+</head>
+<body class="phase1" data-emojis="✨🎂💙🎈✨">
+
+    <!-- PHASE 1 -->
+    <div id="phase1" class="card active">
+        <h1>Happy Birthday Meri Tidi! 💙</h1>
+        <div class="message">
+            meri tidi, meri janemn, meri pyari buggu,<br>
+            Happy Birthday Rabb tenu hmesha khush rkhe,<br>
+            Tenu hr ek khushi deve, tu hmesha hsde rhe,<br>
+            teri dukh meri te a jan bus tu khush rhe,<br>
+            te mere nal rhe 💕
+        </div>
+        <button class="btn" onclick="nextPhase(2)">Next Phase 💖</button>
+    </div>
+
+    <!-- PHASE 2 -->
+    <div id="phase2" class="card">
+        <h1>Do You Love Me? 💕</h1>
+        <div style="margin: 30px 0;">
+            <button class="btn yes-btn" onclick="showBirthdayCard()">Yes 😍</button>
+            <button class="btn no-btn" onclick="showDoraemon(1)">No 😈</button>
+        </div>
+        <div id="dora1" class="dora-container">
+            <div class="doraemon">No dont do this please 😱💙</div>
+        </div>
+        <div id="dora2" class="dora-container">
+            <div class="doraemon">not please dont do that 😭💙</div>
+        </div>
+    </div>
+
+    <!-- BIRTHDAY CARD - Part of Phase 2 -->
+    <div id="birthdayCard" class="card">
+        <h1>Happy Birthday Meri Pyari! 🎂</h1>
+        <div class="birthday-card">
+            <div class="punjabi-message">
+                ਮੇਰੀ ਪਿਆਰੀਏ ❤️<br><br>
+                ਜਨਮਦਿਨ ਦੀਆਂ ਬਹੁਤ ਬਹੁਤ ਮੁਬਾਰਕਾਂ।<br>
+                ਅੱਜ ਦਾ ਦਿਨ ਮੇਰੇ ਲਈ ਵੀ ਉਨਾ ਹੀ ਖਾਸ ਹੈ ਜਿੰਨਾ ਤੇਰੇ ਲਈ, ਕਿਉਂਕਿ ਅੱਜ ਉਸ ਇਨਸਾਨ ਦਾ ਜਨਮਦਿਨ ਹੈ ਜਿਸਨੇ ਮੇਰੀ ਜ਼ਿੰਦਗੀ ਨੂੰ ਖੁਸ਼ੀਆਂ ਨਾਲ ਭਰ ਦਿੱਤਾ।<br><br>
+                ਜਦੋਂ ਤੋਂ ਤੂੰ ਮੇਰੀ ਜ਼ਿੰਦਗੀ ਵਿੱਚ ਆਈ ਏ, ਹਰ ਦਿਨ ਸੋਹਣਾ ਲੱਗਣ ਲੱਗ ਪਿਆ। ਤੇਰੀ ਹਾਸੀ ਮੇਰੇ ਦਿਲ ਨੂੰ ਸਕੂਨ ਦਿੰਦੀ ਏ ਤੇ ਤੇਰੀਆਂ ਗੱਲਾਂ ਮੇਰੇ ਹਰ ਦੁੱਖ ਨੂੰ ਭੁਲਾ ਦਿੰਦੀਆਂ ਨੇ।<br>
+                ਤੂੰ ਸਿਰਫ ਮੇਰੀ ਲਵ ਨਹੀਂ, ਤੂੰ ਮੇਰੀ ਖੁਸ਼ੀ, ਮੇਰੀ ਤਾਕਤ ਤੇ ਮੇਰੀ ਸਭ ਤੋਂ ਸੋਹਣੀ ਆਦਤ ਬਣ ਚੁੱਕੀ ਏ।<br><br>
+                ਮੈਂ ਰੱਬ ਕੋਲ ਹਰ ਰੋਜ਼ ਇਹੀ ਦੁਆ ਕਰਦਾ ਹਾਂ ਕਿ ਤੇਰੀ ਜ਼ਿੰਦਗੀ ਹਮੇਸ਼ਾ ਪਿਆਰ, ਖੁਸ਼ੀਆਂ ਤੇ ਕਾਮਯਾਬੀ ਨਾਲ ਭਰੀ ਰਹੇ। ਤੇਰੇ ਹਰ ਸੁਪਨੇ ਪੂਰੇ ਹੋਣ ਤੇ ਤੇਰੇ ਚਿਹਰੇ ਤੇ ਹਮੇਸ਼ਾ ਏਦਾਂ ਹੀ ਸੋਹਣੀ ਮੁਸਕਾਨ ਰਹੇ।<br><br>
+                ਕਈ ਵਾਰ ਸ਼ਬਦ ਘੱਟ ਪੈ ਜਾਂਦੇ ਨੇ ਇਹ ਦੱਸਣ ਲਈ ਕਿ ਤੂੰ ਮੇਰੇ ਲਈ ਕਿੰਨੀ ਖਾਸ ਏ।<br>
+                ਮੈਨੂੰ ਤੇਰੇ ਨਾਲ ਬਿਤਾਇਆ ਹਰ ਪਲ ਬਹੁਤ ਪਿਆਰਾ ਲੱਗਦਾ ਏ ਅਤੇ ਮੈਂ ਚਾਹੁੰਦਾ ਹਾਂ ਕਿ ਅਸੀਂ ਹਮੇਸ਼ਾ ਏਦਾਂ ਹੀ ਇਕੱਠੇ ਰਹੀਏ।<br><br>
+                ਤੂੰ ਮੇਰੀ ਜ਼ਿੰਦਗੀ ਦਾ ਸਭ ਤੋਂ ਸੋਹਣਾ ਤੋਹਫ਼ਾ ਏ। ਤੇਰੇ ਬਿਨਾ ਮੇਰੀ ਦੁਨੀਆ ਅਧੂਰੀ ਜਿਹੀ ਲੱਗਦੀ ਏ।<br><br>
+                <span style="font-size: 1.4em; color: #DC143C;">Once Again Happy Birthday Meri Jaan ❤️<br>Love You Endless 💖</span>
+            </div>
+        </div>
+        <button class="btn" onclick="nextPhase(3)">Next Surprise 💝</button>
+    </div>
+
+    <!-- PHASE 3 -->
+    <div id="phase3" class="card">
+        <h1>Every Moment For You 💙</h1>
+        <div class="message">
+            every song every thing remind me of you<br><br>
+            tidi me tenu bahut pyar krda te hmesha krda rhu<br>
+            meri lyi bus eh din khash nhi ,,,meri lyi hr din khash e because tu meri kol a
+        </div>
+        <button class="btn" onclick="nextPhase(4)">Final Love 💖</button>
+    </div>
+
+    <!-- PHASE 4 - FINAL -->
+    <div id="phase4" class="card">
+        <h1>I Love You Forever 💖</h1>
+        <div class="message">
+            me tenu hmesha khush rkhna, sare life tere nal spend krni<br>
+            te jld he tere aun birthday ejhte mnwawa ge<br>
+            bus me rabb tu mngda ki tu hmesha khush rhe hmesha<br><br>
+            
+            te ajj menu maaf krde je koi me glti kre hove pehla<br>
+            tidi i love you really, i love you very much<br>
+            bahut jyada pyar krda tenu me teri lyi me sb kuj kru<br><br>
+            
+            bus tu hmesha khush rhe, raab kre tere sare dhukh meri te a javn<br>
+            bus tu khush rhe<br><br>
+            
+            te ekk hor gl me tere to akda nhi kde<br>
+            teri hr gl sunu hmesha, te hmesha tera bn ki rhu<br>
+            teri lyi me sb kuj kru, tera hr birthday ekhte mnwaw ge<br><br>
+            
+            me hmesha tere nl rhu, kde ve kisi ve condition ch temu ekala nhi sd da<br>
+            tere ekk up downs me tere nl rhu<br><br>
+            
+            duniya di prwa nhi krda bus tenu khush rkhu<br>
+            te jld tenu viah lu...
+        </div>
+        <!-- UMA AAHHH MESSAGE -->
+<div style="margin: 40px 0; padding: 30px; background: rgba(255,255,255,0.15); border-radius: 25px; border: 3px solid rgba(255,192,203,0.8); box-shadow: 0 20px 45px rgba(255,105,180,0.4);">
+    <div style="font-size: 5em; margin: 20px 0; animation: kiss 2s infinite;">💋</div>
+    <div style="font-size: 3.5em; color: #FF1493; font-weight: bold; text-shadow: 3px 3px 10px rgba(0,0,0,0.5); animation: glowText 2s infinite alternate;">umaaahhh meri tidi</div>
+    <div style="font-size: 4em; margin: 15px 0;">💖💕💋</div>
+</div>
+ 
+        
+        <!-- TEDDY BEAR -->
+        <div style="margin: 40px 0;">
+            <div class="teddy">🧸</div>
+            <h2 style="color: white; font-size: 2.2em; margin-top: 20px; text-shadow: 3px 3px 10px rgba(0,0,0,0.7);">
+                "Thanks for coming in my life" 🧸<br>
+                <span style="font-size: 3.5em; color: #FF1493;">Happy Birthday! 🎂💖</span>
+            </h2>
+        </div>
+        
+        <div class="message" style="font-size: 1.5em; margin-top: 20px;">
+            meri tidi Happy birthday<br>
+            hmesha khush rhe, tere face te hmesha smile rhe<br>
+            tere sare supne pure oh jan<br>
+            <span style="color: #FF1493; font-size: 1.8em;">Love you meri Buggu 💖💖💖</span>
+        </div>
+    </div>
+
+    <script>
+        let currentPhase = 1;
+        let doraCount = 0;
+
+        function nextPhase(phase) {
+            document.body.className = `phase${phase}`;
+            document.body.setAttribute('data-emojis', getEmojis(phase));
+            document.querySelectorAll('.card').forEach(card => card.classList.remove('active'));
+            document.getElementById(`phase${phase}`).classList.add('active');
+            currentPhase = phase;
+            
+            // Confetti on phase changes
+            confettiEffect();
+        }
+
+        function showBirthdayCard() {
+            document.getElementById('phase2').classList.remove('active');
+            document.getElementById('birthdayCard').classList.add('active');
+        }
+
+        function showDoraemon(count) {
+            doraCount = count;
+            document.getElementById('dora1').querySelector('.doraemon').classList.toggle('active', count === 1);
+            document.getElementById('dora2').querySelector('.doraemon').classList.toggle('active', count === 2);
+            
+            if (count === 2) {
+                setTimeout(() => {
+                    showBirthdayCard();
+                }, 2000);
+            }
+        }
+
+        function getEmojis(phase) {
+            const emojis = {
+                1: '✨🎂💙🎈✨',
+                2: '💕💖💗💘💝',
+                3: '💙✨🎵💙✨',
+                4: '💖🧸💕🎂💖'
+            };
+            return emojis[phase] || '💖✨';
+        }
+
+        // Confetti Effect
+        function confettiEffect() {
+            if (typeof confetti === 'undefined') {
+                const script = document.createElement('script');
+                script.src = 'https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js';
+                script.onload = () => {
+                    confetti({ particleCount: 120, spread: 90, origin: { y: 0.6 } });
+                };
+                document.head.appendChild(script);
+            } else {
+                confetti({ particleCount: 120, spread: 90, origin: { y: 0.6 } });
+            }
+        }
+
+        // Initial confetti
+        window.addEventListener('load', confettiEffect);
+    </script>
+</body>
+</html>
